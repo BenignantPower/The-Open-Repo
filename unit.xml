@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0140" tests="15" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-06-19T08:55:41" tests="0" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Sku tests" timestamp="2022-06-19T08:55:41" tests="15" file="/Programs/Web-Dev/CRED-Backend/test/test.js" time="0.0140" failures="0">
+    <testcase name="Sku tests add Brand Success" time="0.0020" classname="add Brand Success">
+    </testcase>
+    <testcase name="Sku tests Add Sku Failure" time="0.0010" classname="Add Sku Failure">
+    </testcase>
+    <testcase name="Sku tests Add Availability Success" time="0.0000" classname="Add Availability Success">
+    </testcase>
+    <testcase name="Sku tests Add Availability Failure" time="0.0000" classname="Add Availability Failure">
+    </testcase>
+    <testcase name="Sku tests Update non existing availability" time="0.0010" classname="Update non existing availability">
+    </testcase>
+    <testcase name="Sku tests Update availability succesfully" time="0.0010" classname="Update availability succesfully">
+    </testcase>
+    <testcase name="Sku tests Remove non existing availability" time="0.0010" classname="Remove non existing availability">
+    </testcase>
+    <testcase name="Sku tests Remove availability successfully" time="0.0000" classname="Remove availability successfully">
+    </testcase>
+    <testcase name="Sku tests Book Product failure" time="0.0000" classname="Book Product failure">
+    </testcase>
+    <testcase name="Sku tests Book Product Success" time="0.0020" classname="Book Product Success">
+    </testcase>
+    <testcase name="Sku tests search with empty categoryType and empty subCategoryType" time="0.0010" classname="search with empty categoryType and empty subCategoryType">
+    </testcase>
+    <testcase name="Sku tests search with empty categoryType and nonEmpty subCategoryType" time="0.0000" classname="search with empty categoryType and nonEmpty subCategoryType">
+    </testcase>
+    <testcase name="Sku tests search with nonempty categoryType and empty subCategoryType" time="0.0010" classname="search with nonempty categoryType and empty subCategoryType">
+    </testcase>
+    <testcase name="Sku tests search categorType and subCategoryType" time="0.0020" classname="search categorType and subCategoryType">
+    </testcase>
+    <testcase name="Sku tests multi search" time="0.0020" classname="multi search">
+    </testcase>
+  </testsuite>
+</testsuites>
