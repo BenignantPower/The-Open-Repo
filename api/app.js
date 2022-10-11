@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 let MongoClient = require('mongodb').MongoClient
 let url = 'mongodb://127.0.0.1:27017/event';
 
-// const eventRoutes = require("./routes/event");
+const eventRoutes = require("./routes/event");
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -20,9 +20,7 @@ app.use((req, res, next) =>{
     next();
 });
 
-app.get("/",(req,res,next) =>{
-    res.status(200).send("hello world");
-})
+app.use("/api/v3/app",eventRoutes);
 
 MongoClient.connect(url, 
     {useNewUrlParser: true, useUnifiedTopology: true},
