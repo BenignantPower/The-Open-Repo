@@ -101,3 +101,57 @@ exports.getEvent = async(req,res,next)=>{
         });
     }
 }
+
+exports.createEvent = async(req,res,next)=>{
+    let filesArray = [];
+    req.files.forEach(element => {
+        const file = {
+            fileName: element.originalname,
+            filePath: element.path,
+            fileType: element.mimetype,
+            fileSize: fileSizeFormatter(element.size, 2)
+        }
+        filesArray.push(file);
+    });
+    const type = req.body.type;
+    const uid = req.body.uid;
+    const name = req.body.name;
+    const tagline = req.body.tagline;
+    const schedule = req.body.schedule;
+    const description = req.body.description;
+    const moderator = req.body.moderator;
+    const category = req.body.category;
+    const sub_category = req.body.sub_category;
+    const rigor_rank = req.body.rigor_rank;
+    const attendes = req.body.attendes;
+
+    var eventObject = {
+        type : type,
+        uid : uid,
+        name : name,
+        tagline : tagline,
+        schedule : new Date(schedule).toString().split('G')[0],
+        description : description,
+        files: filesArray,
+        moderator : moderator,
+        category : category,
+        sub_category : sub_category,
+        rigor_rank : rigor_rank,
+        attendes : attendes
+    };
+    MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true},(err, client)=>{
+        db = client.db("event")
+        db.collection('eventList')
+                .insertOne(eventObject)
+                .then(result =>{
+                    res.status(201).json({
+                        eventid : result.insertedId,
+                    });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        err:"could not create a new event"
+                    })
+                });
+    });
+}
