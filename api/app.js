@@ -11,6 +11,10 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 
+//setting up templating engine
+app.set('view engine' , 'ejs');
+app.set('views' , 'views');
+
 app.use('/uploads', express.static(path.join(__dirname , 'uploads')));
 
 app.use((req, res, next) =>{
@@ -21,6 +25,9 @@ app.use((req, res, next) =>{
 });
 
 app.use("/api/v3/app",eventRoutes);
+app.use("/api/vs/app/charts", (req,res,next) =>{
+    res.render("index");
+})
 
 MongoClient.connect(url, 
     {useNewUrlParser: true, useUnifiedTopology: true},
