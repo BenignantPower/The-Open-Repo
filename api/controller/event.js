@@ -221,3 +221,22 @@ exports.putEvent = async(req,res,next)=>{
                 });
     });
 }
+
+exports.deleteEvent = async(req,res,next)=>{
+    const id = req.params.id;
+
+    MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true},(err, client)=>{
+        db = client.db("event")
+        db.collection('eventList')
+                .deleteOne(
+                    {_id : new mongodb.ObjectId(id) },
+                    (err,result)=>{
+                        if(err) throw err;
+                        return res.status(200).json({
+                            eventId: id,
+                            message:"Event deleted successfully"
+                        });
+                    }
+                );
+    });
+}
