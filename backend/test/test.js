@@ -28,34 +28,6 @@ describe('Sku tests', function() {
         expect(skuService.add(getMockBrand(id, "Brand B"))).to.be.equal(false);
         done();
 	});
-
-    it('Add Sku Failure', (done) => {
-        expect(skuService.add(new Brand(null, "Brand A"))).to.be.equal(false);
-        const id = uuid();
-        expect(skuService.add(new Brand(id ,"Brand A" , Constants.CategoryType.APPAREL , Constants.SubCategoryType.FOOTWEAR ,[]))).to.be.equal(true);
-        expect(skuService.add(new Brand(id ,"Brand B" , Constants.CategoryType.BEVERAGES , Constants.SubCategoryType.COFFEE ,[]))).to.be.equal(false);
-        done();
-	});
-
-
-    it('Add Availability Success', (done) => {
-        const id = uuid();
-        let productAvailability1 = new ProductAvailability("1",Constants.CategoryType.APPAREL , Constants.SubCategoryType.CLOTHING , 10 , 0);
-        let productAvailability2 = new ProductAvailability("2",Constants.CategoryType.BEVERAGES , Constants.SubCategoryType.COFFEE , 10 , 0);
-
-        const brand = new Brand(id, "Brand A", [Constants.CategoryType.APPAREL, Constants.CategoryType.BEVERAGES], [Constants.SubCategoryType.CLOTHING, Constants.SubCategoryType.COFFEE], [])
-
-        expect(skuService.add(brand)).to.be.equal(true);
-        expect(skuService.addAvailability(brand.id, productAvailability1)).to.be.equal(true);
-        expect(skuService.addAvailability(brand.id , productAvailability2)).to.be.equal(true);
-
-        let fetchedBrand =  skuService.get(brand.id)
-        expect(fetchedBrand.id).to.be.equal(brand.id);
-        expect(fetchedBrand.productAvailabilities.length).to.be.equal(brand.productAvailabilities.length);
-        done();
-	});
-
-
     it('Add Availability Failure', (done) => {
         const id = uuid();
         expect(skuService.addAvailability(null, null), "Empty brand and product availability should not be added").to.be.equal(false);
